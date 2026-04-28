@@ -1,4 +1,4 @@
-const user = require("../models/user");
+const User = require("../models/user");
 const loginValidation = require("./validation/authvalidation");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
@@ -15,7 +15,7 @@ const login = async(req,res)=>{
         });
     }
     const {email,password} = value;
-    const user = await user.findOne({email});
+    const user = await User.findOne({email});
     if(!user) return res.status(400).json({
         msg:"Invalid email or password"
     });
@@ -24,13 +24,14 @@ const login = async(req,res)=>{
     if(!matchpassword) return res.status(400).json({
         msg:"Invalid email or password"
     });
-    const token = jwt.sign({id:user._id,role:user.role},process.env.JWT_SECRET,{expiresIn:"30d"});
+    const token = jwt.sign({role:user.role},process.env.JWT_SECRET,{expiresIn:"30d"});
     return res.status(200).json({
         msg:"Login successful",
         token
     });
   
     }catch(error){
+        console.log(error)
         return res.status(500).json({
             msg:"Server error"  
         })
