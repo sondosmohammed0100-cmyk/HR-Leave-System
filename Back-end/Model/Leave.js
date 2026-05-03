@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const User=require('../Model/User')
 const LeaveSchema=new mongoose.Schema({
  userId:{
-  types: mongoose.Schema.Types.ObjectId,
+  type: mongoose.Schema.Types.ObjectId,
   ref:"User",
   required:true
  },
