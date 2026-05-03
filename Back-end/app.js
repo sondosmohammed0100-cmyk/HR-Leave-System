@@ -3,6 +3,7 @@ const app=express()
 require('dotenv').config()
 const cors = require('cors');
 app.use(cors())
+app.use(express.json());
 const mongoose = require('mongoose');
 const db_URL=process.env.DB_URL
 async function DB_Connection() {
@@ -13,8 +14,7 @@ async function DB_Connection() {
 
   }
   catch(err) {
-    console.log("Faild to connect to DB")
-    
+    console.log("Faild to connect to DB") 
   }
   
 } 

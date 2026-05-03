@@ -14,11 +14,8 @@ const UserSchema=new mongoose.Schema({
   password:{
     type: String,
     minlength:6,
-    required: true
-  },
-  confirmPassword:{
-    type: String,
-    required: true
+    required: true,
+    select: false
   },
   department:{
     type:String,
@@ -30,6 +27,6 @@ const UserSchema=new mongoose.Schema({
     default: 'emplyee'
   }
 
-});
+},{timestamps: true});
 const User = mongoose.model('User',UserSchema);
 module.exports=User

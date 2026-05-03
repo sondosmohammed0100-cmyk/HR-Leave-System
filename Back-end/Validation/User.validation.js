@@ -3,7 +3,7 @@ const UserValidSchema=JOI.object({
 
   username:JOI.string().required().min(3).max(30),
 
-  emailL:JOI.string().email().required(),
+  email:JOI.string().email().required(),
 
   password:JOI.string().min(6).required(),
 
@@ -13,5 +13,12 @@ const UserValidSchema=JOI.object({
   role:JOI.string().valid('emplyee','HR').default('emplyee')
 
 });
+ 
+ const loginValidation = JOI.object({
+  email:JOI.string().email().required(),
+  password:JOI.string().min(6).required()
 
-module.exports = UserValidSchema;
+ })
+
+
+module.exports = {UserValidSchema,loginValidation};
