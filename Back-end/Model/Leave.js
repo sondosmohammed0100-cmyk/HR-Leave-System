@@ -1,6 +1,6 @@
 
 const mongoose = require("mongoose");
-const User=require('../Model/User')
+
 const LeaveSchema=new mongoose.Schema({
  userId:{
   type: mongoose.Schema.Types.ObjectId,
@@ -8,17 +8,28 @@ const LeaveSchema=new mongoose.Schema({
   required:true
  },
  leave_type:{
+  type:String,
+  required:true
 
  },
  start_Date:{
+  type:Date,
+  required:true
 
  },
  end_Date:{
+  type:Date,
+  required:true
 
  },
 reason: {
     type: String,
     required: true
+},
+attachedFile:{
+  type: String,
+
+
 },
 status_leave:{
   type: String,
