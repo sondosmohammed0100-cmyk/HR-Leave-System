@@ -4,3 +4,4 @@ This design includes:
 - Layout structure
 - UI components and styling
 https://www.figma.com/design/l58143Y9y617ARdlIwdTXL/Untitled?node-id=0-1&p=f&t=uY3Waka4mrbgDcuf-0
+finish
