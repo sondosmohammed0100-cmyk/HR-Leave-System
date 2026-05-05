@@ -25,6 +25,10 @@ const UserSchema=new mongoose.Schema({
     type: String,
     enum: ['emplyee', 'HR'],
     default: 'emplyee'
+  },
+  leaveBalance: {
+   type: Number,
+   default:21,
   }
 
 },{timestamps: true});

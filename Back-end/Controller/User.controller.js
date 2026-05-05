@@ -16,7 +16,6 @@ const Reqister=async(req,res,next)=>{
       return res.status(400).json({msg:"error occured"})
     };
    
-
     const {username,email,password,department,role}=value;
     // console.log(req.body)
      const existUser = await User.findOne({ email }).select("-password");;

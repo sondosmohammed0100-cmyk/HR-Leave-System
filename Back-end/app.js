@@ -21,7 +21,9 @@ async function DB_Connection() {
 DB_Connection();
 
 const authRouter=require('./Routes/User.router')
+const leaveRoutes=require('./Routes/Leave.router')
 app.use('/api',authRouter)
+app.use('/api',leaveRoutes)
 
 
 
