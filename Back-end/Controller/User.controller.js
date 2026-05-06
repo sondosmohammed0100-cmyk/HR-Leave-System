@@ -2,7 +2,8 @@ const {UserValidSchema,loginValidation}=require('../Validation/User.validation')
 
 const jwt = require("jsonwebtoken");
 const User=require('../Model/User')
-const bcrypt=require('bcrypt')
+const bcrypt=require('bcrypt');
+
 const Reqister=async(req,res,next)=>{
    try{
 
@@ -69,7 +70,8 @@ const login = async(req,res)=>{
         msg:"Invalid email or password"
     });
     const token = jwt.sign(
-        {role:user.role},
+        { id:user._id,
+          role:user.role},
         process.env.JWT_SECRET,
         {expiresIn:"30d"});
    // return console.log(token)

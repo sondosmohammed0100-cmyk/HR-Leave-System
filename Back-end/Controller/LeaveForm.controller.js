@@ -1,4 +1,4 @@
-const user =require('../Model/User');
+const user=require('../Model/User')
 const leaveModel=require('../Model/Leave');
 const LeaveValidation=require('../Validation/Leave.validation');
 
@@ -25,7 +25,13 @@ const insertLeave=async (req,res,next)=>{
       return res.status(400).json({msg:"Start date must be before end date"});
     }
     const totalDays=calculateLeaveDays(start_Date,end_Date);
-    const findUser=await user.findById(userId);
+    
+    const findUser = await user.findById(req.userId);
+
+      if (!findUser) {
+        return res.status(404).json({ msg: "User not found" });
+      }
+    //  return console.log("userId:", req.userId);
     
    if (totalDays > findUser.leaveBalance) {
       return res.status(400).json({
@@ -35,11 +41,11 @@ const insertLeave=async (req,res,next)=>{
     if (totalDays <= 0) {
       return res.status(400).json({ message: "Invalid date range" });
     }
-  //   if(!req.file){
-  //     return res.status(400).json({msg:"Image is required"})
-  //   }
-  // return console.log(req.file)
-   // const image=`/image/${req.file.filename}`
+    if(!req.file){
+      return res.status(400).json({msg:"Image is required"})
+    }
+ // return console.log(req.file)
+   const attachment=`/attach/${req.file.filename}`
 
     const leave=await leaveModel.create({
       leave_type,
@@ -47,7 +53,8 @@ const insertLeave=async (req,res,next)=>{
       start_Date,
       end_Date,
       reason,
-      status_leave
+      status_leave,
+      attachedFile:attachment
   });
   return res.status(201).json({msg:"Succesfully Created",leave})
   }
