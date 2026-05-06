@@ -1,32 +1,36 @@
+
 const express=require("express")
 const app=express()
 require('dotenv').config()
 const cors = require('cors');
 app.use(cors())
-const mongoose = require('mongoose');
-const db_URL=process.env.DB_URL
-async function DB_Connection() {
+//middleware
+app.use(express.json())
 
-  try{
-    await mongoose.connect(db_URL);
-    console.log("Connected to DB")
-
-  }
-  catch(err) {
-    console.log("Faild to connect to DB")
-    
-  }
-  
-} 
-DB_Connection();
-
-const authRouter=require('./Routes/User.router')
-app.use('/api',authRouter)
-
-
+//dbconection
+const mongoose = require("mongoose");
+async function dbconnection(){
+    try{
+        await mongoose.connect(process.env.DB_URL)
+        console.log("db connected")
+    }
+    catch(error){
+        console.log("error")
+    }
+}
+dbconnection()
 
 
 const port=process.env.PORT || 3000
 app.listen(port,()=>{
   console.log(`Server running on port------->${port}`)
 })
+
+
+//routes
+const authRoutes = require("./Routes/authRoutes");
+
+app.use("/api", authRoutes);
+
+
+

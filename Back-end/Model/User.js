@@ -16,10 +16,7 @@ const UserSchema=new mongoose.Schema({
     minlength:6,
     required: true
   },
-  confirmPassword:{
-    type: String,
-    required: true
-  },
+
   department:{
     type:String,
     required:true

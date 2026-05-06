@@ -12,13 +12,16 @@ let navigate = useNavigate()
 
  function handleRegister(values){
 
-   console.log(values);
-
-axios.post(`http://localhost:8000/api/register`,values)
-.then((res)=>{
- console.log(res);
  
-  // navigate("/login")
+
+axios.post(`http://localhost:5000/api/register`,values)
+.then((res)=>{
+ console.log(res.data.msg);
+ if(res.data.msg  === "Sucess"){
+   
+   navigate("/login")
+ }
+ 
   
 })
  

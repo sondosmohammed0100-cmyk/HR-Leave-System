@@ -7,6 +7,7 @@ import HrDashboard from "./Components/HrDashboard/HrDashboard.jsx"
 import Empdashboard from "./Components/EmpDashboard/EmpDashboard.jsx"
 import Register from './Components/Register/Register'
 import  NotFound  from './Components/NotFound/NotFound'
+import ProtectedRout from './Components/ProtectedRout/ProtectedRout.jsx'
 
 function App() {
 
@@ -14,7 +15,7 @@ function App() {
 let y = createBrowserRouter([
   {path: "" , element: <Layout/> , children:[
     {path: "hrdashboard" , element: <HrDashboard/>},
-    {path: "empdashboard" , element: <Empdashboard/>},
+    {path: "empdashboard" , element: <Empdashboard/>},   
     {path: "login" , element: <Login/>},
     {path: "register" , element: <Register/>},
     {path: "*" , element: <NotFound/>},

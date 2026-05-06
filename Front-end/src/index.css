@@ -10,7 +10,7 @@ background-color: #1e293b !important;
 } 
 
 .layer2{
-   background-color: rgba(0, 0, 0, 0.712) !important;  
+   /* background-color: rgba(0, 0, 0, 0.712) !important;   */
 }
 
 
@@ -89,10 +89,59 @@ color:#94A3B8 ;
 }
 
 
+.footer{
+  
+}
 
 
 
 
 
+.card1{
+  border: solid 1px gray;
+  box-shadow: 1px 1px 7px 1px gray;
+}
+
+.card2{
+  border: solid 1px gray;
+  box-shadow: 1px 1px 7px 1px gray;
+}
 
 
+.card3{
+  border: solid 1px gray;
+  box-shadow: 1px 1px 7px 1px gray;
+}
+
+
+
+.icont1{
+  background-color: #DBEAFE;
+  display: inline-block;
+  text-align: center;
+  margin-bottom: 15px;
+  width: 15%;
+  height: 15%;
+  border-radius: 10px;
+}
+
+
+.icont2{
+  background-color: #FEF3C7;
+  display: inline-block;
+  text-align: center;
+   margin-bottom: 15px;
+  width: 15%;
+  height: 15%;
+  border-radius: 10px;
+}
+
+.icont3{
+  background-color: #FEE2E2;
+  display: inline-block;
+  text-align: center;
+   margin-bottom: 15px;
+  width: 15%;
+  height: 15%;
+  border-radius: 10px;
+}
