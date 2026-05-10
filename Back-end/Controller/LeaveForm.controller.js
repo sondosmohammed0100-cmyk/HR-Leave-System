@@ -1,5 +1,6 @@
 const user=require('../Model/User')
 const leaveModel=require('../Model/Leave');
+const asyncWrapper=require('../Middelware/asyncWrraper');
 const LeaveValidation=require('../Validation/Leave.validation');
 
 function calculateLeaveDays(start_date,end_date){
@@ -9,9 +10,8 @@ function calculateLeaveDays(start_date,end_date){
   const diffdays= differtime/(1000*60*60*24)+1;
   return diffdays;
 }
-const insertLeave=async (req,res,next)=>{
-  try{
-    
+const insertLeave=asyncWrapper(
+async (req,res,next)=>{
     const {error,value}=LeaveValidation.validate(req.body,{
       abortEarly:false,
       stripUnknown:true
@@ -57,11 +57,5 @@ const insertLeave=async (req,res,next)=>{
       attachedFile:attachment
   });
   return res.status(201).json({msg:"Succesfully Created",leave})
-  }
-  catch(err){
-    console.log(err)
-    return res.status(500).json({msg:"Server Error",err})
-  }
-
-}
+})
 module.exports=insertLeave;

@@ -1,8 +1,7 @@
-const errormiddleware=(err,req,res,next)=>{
-    console.log(err)
-    return res.status(500).json({
-        msg:"Server Error"
+const globalMiddleware = (err ,req, res, next) => {
+    console.log(err);
+    res.status(500).json({
+        msg:"server error"
     })
-
 }
-module.exports=errormiddleware;
+module.exports = globalMiddleware;

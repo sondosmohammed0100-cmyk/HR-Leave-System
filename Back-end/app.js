@@ -26,7 +26,9 @@ app.use('/api',authRouter)
 app.use('/api',leaveRoutes)
 
 
+const globalMiddleware=require('./Middelware/globalMiddleware')
 
+app.use(globalMiddleware)
 
 const port=process.env.PORT || 3000
 app.listen(port,()=>{

@@ -1,53 +1,41 @@
 const {UserValidSchema,loginValidation}=require('../Validation/User.validation');
-
+const asyncWrapper=require('../Middelware/asyncWrraper');
 const jwt = require("jsonwebtoken");
 const User=require('../Model/User')
 const bcrypt=require('bcrypt');
+const Register=asyncWrapper(
+async(req,res,next)=>{
+  const{error,value}= UserValidSchema.validate(req.body,{
+    abortEarly:false,
+    stripUnknown:true
+  });
+  //console.log(value)
+  if(error){
+     console.log(error)
+    return res.status(400).json({msg:"error occured"})
+  };
+ 
+  const {username,email,password,department,role}=value;
+  // console.log(req.body)
+   const existUser = await User.findOne({ email }).select("-password");;
 
-const Reqister=async(req,res,next)=>{
-   try{
-
-    const{error,value}= UserValidSchema.validate(req.body,{
-      abortEarly:false,
-      stripUnknown:true
+  if (existUser) {
+      return res.status(409).json({ msg: "User already Exist"});
+   }
+   const hashPassword=await bcrypt.hash(password,10);
+    const newUser = await User.create({
+      username,
+      email,
+      password:hashPassword,
+      department,
+      role
     });
-    //console.log(value)
-    if(error){
-       console.log(error)
-      return res.status(400).json({msg:"error occured"})
-    };
-   
-    const {username,email,password,department,role}=value;
-    // console.log(req.body)
-     const existUser = await User.findOne({ email }).select("-password");;
+   return  res.status(201).json({msg:"Sucess","UserInfo": newUser})
+  
+});
 
-    if (existUser) {
-        return res.status(409).json({ msg: "User already Exist"});
-     }
-     const hashPassword=await bcrypt.hash(password,10);
-      const newUser = await User.create({
-        username,
-        email,
-        password:hashPassword,
-        department,
-        role
-      });
-      
-      
-     return  res.status(201).json({msg:"Sucess","UserInfo": newUser})
-    }
-    catch(err){
-      console.log(err)
-      return res.status(500).json({msg:"Server error"})
-      
-      
-    }
-  
-  
-};
-const login = async(req,res)=>{
-    try{
-       
+const login = asyncWrapper(
+async(req,res,next)=>{     
   const{error, value} = loginValidation.validate(req.body,{
     abortEarly:false,
     stripUnknown:true
@@ -79,12 +67,5 @@ const login = async(req,res)=>{
         msg:"Login successful",
         token
     });
-  
-    }catch(error){
-        console.log(error)
-        return res.status(500).json({
-            msg:"Server error"  
-        })
-    }
-}
-module.exports={Reqister,login}
+})
+module.exports={Register,login};
