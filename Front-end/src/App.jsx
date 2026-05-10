@@ -7,6 +7,9 @@ import HrDashboard from "./Components/HrDashboard/HrDashboard.jsx"
 import Empdashboard from "./Components/EmpDashboard/EmpDashboard.jsx"
 import Register from './Components/Register/Register'
 import  NotFound  from './Components/NotFound/NotFound'
+import ProtectedRout from './Components/ProtectedRout/ProtectedRout.jsx'
+import FormRequest from './Components/FormRequest/FormRequest.jsx'
+import { LeaveProvider } from './Components/Context/LeaveContext.jsx'
 
 function App() {
 
@@ -14,7 +17,8 @@ function App() {
 let y = createBrowserRouter([
   {path: "" , element: <Layout/> , children:[
     {path: "hrdashboard" , element: <HrDashboard/>},
-    {path: "empdashboard" , element: <Empdashboard/>},
+    {path: "empdashboard" , element: <Empdashboard/>},   
+    {path: "formrequest" , element: <FormRequest/>},   
     {path: "login" , element: <Login/>},
     {path: "register" , element: <Register/>},
     {path: "*" , element: <NotFound/>},
@@ -23,25 +27,13 @@ let y = createBrowserRouter([
 ])
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   return (
     <>
+<LeaveProvider>
 
  <RouterProvider router={y}></RouterProvider>
+</LeaveProvider>
+
     </>
   )
 }

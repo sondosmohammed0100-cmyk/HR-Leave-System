@@ -17,7 +17,7 @@ export default function Login() {
 
  function handleLogin(values){
 
-axios.post(`http://localhost:8000/api/Login`,values)
+axios.post(`http://localhost:5000/api/login`,values)
 .then((res)=>{
   console.log(res);
   // localStorage.setItem("userToken" ,res.data.token)
@@ -162,24 +162,24 @@ let formik = useFormik({
             </button>
 
 
-              <div class="d-flex align-items-center my-4">
-                  <hr class="flex-grow-1"/>
-          <span class="mx-2 text-muted small">or continue with</span>
-          <hr class="flex-grow-1"/>
+              <div className="d-flex align-items-center my-4">
+                  <hr className="flex-grow-1"/>
+          <span className="mx-2 text-muted small">or continue with</span>
+          <hr className="flex-grow-1"/>
           </div>
 
 
-<div class="row g-3">
-  <div class="col-6">
-    <button class="btn btn-outline-secondary w-100 d-flex align-items-center justify-content-center py-2">
+<div className="row g-3">
+  <div className="col-6">
+    <button className="btn btn-outline-secondary w-100 d-flex align-items-center justify-content-center py-2">
 
-      <span class="small text-dark">Google</span>
+      <span className="small text-dark">Google</span>
     </button>
   </div>
   
-  <div class="col-6">
-    <button class="btn btn-outline-secondary w-100 d-flex align-items-center justify-content-center py-2">
-      <span class="small text-dark">Microsoft</span>
+  <div className="col-6">
+    <button className="btn btn-outline-secondary w-100 d-flex align-items-center justify-content-center py-2">
+      <span className="small text-dark">Microsoft</span>
     </button>
   </div>
 </div>

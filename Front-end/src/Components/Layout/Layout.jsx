@@ -9,10 +9,10 @@ export default function Layout() {
   return <>
   
 
-<MyNavbar/>
+
 <div className=" layer2">
 
- <div className="container py-5  ">
+ <div>
 
  <Outlet/>
 </div>
@@ -21,7 +21,7 @@ export default function Layout() {
 
  </div>
 
- <Footer/>
+
 
   </>
 }
