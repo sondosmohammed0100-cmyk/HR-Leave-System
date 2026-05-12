@@ -1,0 +1,21 @@
+.cardheader{
+
+    background-color: #1E293B;
+}
+
+.btn5{
+    background-color: #1E293B;
+    color: white;
+    border: none;
+    border-radius: 10px;
+   
+}
+
+.btn5:hover{
+   
+    background-color:#1e293bc8 ;
+    color: white;
+    border: none;
+    border-radius: 10px;
+   
+}
