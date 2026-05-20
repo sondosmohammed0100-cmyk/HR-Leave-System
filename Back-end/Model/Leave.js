@@ -1,42 +1,54 @@
-
 const mongoose = require("mongoose");
-const LeaveSchema=new mongoose.Schema({
- userId:{
-  type: mongoose.Schema.Types.ObjectId,
-  ref:"User",
- },
- leave_type:{
-  type:String,
-  required:true
+const LeaveSchema = new mongoose.Schema(
+  {
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+    },
+    leave_type: {
+      type: String,
+      enum: ["annual", "sick", "casual"],
+      required: true,
+    },
+    annual: {
+      used: { type: Number, default: 0 },
+      total: { type: Number, default: 7 },
+    },
 
- },
- start_Date:{
-  type:Date,
-  required:true
+    sick: {
+      used: { type: Number, default: 0 },
+      total: { type: Number, default: 7},
+    },
 
- },
- end_Date:{
-  type:Date,
-  required:true
-
- },
- totalDays:{
-  type:Number,
- },
-reason: {
-    type: String,
-    required: true
-},
-attachedFile:{
-  type: String,
-
-},
-status_leave:{
-  type: String,
-    enum: ['pending', 'approved','rejected'],
-    default: 'pending'
-}
-
-},{timestamps: true});
-const leave = mongoose.model('Leave',LeaveSchema);
-module.exports=leave
+    casual: {
+      used: { type: Number, default: 0 },
+      total: { type: Number, default: 7 },
+    },
+    start_Date: {
+      type: Date,
+      required: true,
+    },
+    end_Date: {
+      type: Date,
+      required: true,
+    },
+    totalDays: {
+      type: Number,
+    },
+    reason: {
+      type: String,
+      required: true,
+    },
+    attachedFile: {
+      type: String,
+    },
+    status_leave: {
+      type: String,
+      enum: ["pending", "approved", "rejected"],
+      default: "pending",
+    },
+  },
+  { timestamps: true },
+);
+const leave = mongoose.model("Leave", LeaveSchema);
+module.exports = leave;

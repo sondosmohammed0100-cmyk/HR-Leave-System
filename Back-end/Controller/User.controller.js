@@ -68,4 +68,9 @@ async(req,res,next)=>{
         token
     });
 })
+
+
+
+
+
 module.exports={Register,login};

@@ -1,6 +1,8 @@
 const asyncWrapper = (asyncfn) => {
     return (req, res, next) => {
-        asyncfn(req, res, next).catch((err) => next(err));
+        asyncfn(req, res, next).catch((err) =>{
+            console.log(err)
+            next(err)});
     };
 };
 module.exports = asyncWrapper;
