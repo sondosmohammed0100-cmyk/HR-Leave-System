@@ -1,8 +1,8 @@
-const User = require('../models/User'); 
+const user = require('../Model/User'); 
 
 const getEmployeeStats = async (req, res) => {
     try {
-        const employees = await User.find({ role: 'employee' });
+        const employees = await user.find({ role: 'employee' });
 
         const totalEmployees = employees.length;
 
@@ -21,4 +21,4 @@ const getEmployeeStats = async (req, res) => {
     }
 };
 
-module.exports = { getEmployeeStats };
+module.exports = getEmployeeStats ;
