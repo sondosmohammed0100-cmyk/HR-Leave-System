@@ -1,9 +1,13 @@
-import { Outlet } from "react-router-dom"
+import { Outlet, Route, Routes } from "react-router-dom"
 
 
 import React from 'react'
-import Footer from "../Footer/Footer"
-import MyNavbar from "../MyNavbar/MyNavbar.jsx"
+import EmpDashboard from "../EmpDashboard/EmpDashboard.jsx"
+import ProtectedRout from "../ProtectedRout/ProtectedRout.jsx"
+import MyRequests from "../MyRequests/MyRequests.jsx"
+import LeaveHistory from "../LeaveHistory/LeaveHistory.jsx"
+
+
 
 export default function Layout() {
   return <>
@@ -14,7 +18,11 @@ export default function Layout() {
 
  <div>
 
+ 
+
+
  <Outlet/>
+
 </div>
 
 

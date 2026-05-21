@@ -61,10 +61,20 @@
 .button:hover{
 background-color: gray;
 }
+
 .button1{
     background-color: rgb(15, 99, 15);
 }
 
 .button2{
     background-color: rgb(236, 7, 7);
+}
+
+
+.button1:hover{
+   color: #1f2a44 !important;
+}
+
+.button2:hover{
+       color: #1f2a44 !important;
 }

@@ -9,9 +9,6 @@ background-color: #1e293b !important;
 
 } 
 
-.layer2{
-   /* background-color: rgba(0, 0, 0, 0.712) !important;   */
-}
 
 
 
@@ -89,9 +86,7 @@ color:#94A3B8 ;
 }
 
 
-.footer{
-  
-}
+
 
 
 
@@ -155,13 +150,39 @@ color:#94A3B8 ;
 
 }
 
-*{
+body{
   margin:0;
   padding:0;
   box-sizing: border-box;
   font-family: "Cairo", sans-serif;
 }
+
+
 body{
   background-color: var(--white-color);
   color: var(--text-color);
+}
+
+
+ .navItem1:hover{
+
+  background-color: #102E70;
+ 
+
+}  
+
+
+
+/* .NavLink.active {
+    background-color: #0d2353 !important; 
+    color: white !important;
+} */
+
+body, html {
+    overflow-x: hidden;
+}
+
+.signout:hover{
+color: red;
+cursor: pointer;
 }

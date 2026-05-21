@@ -10,34 +10,32 @@ export default function Register() {
 const [ApiError, setApiError] = useState("")
 let navigate = useNavigate()
 
+
+
+
  function handleRegister(values){
 
- 
 
-axios.post(`http://localhost:5000/api/register`,values)
-.then((res)=>{
- console.log(res.data.msg);
- if(res.data.msg  === "Sucess"){
+
+axios.post('http://localhost:5000/api/register', values)
+.then((res) => {
+    console.log(res.data.UserInfo.role);
+
+
+
+    if (res.data.msg === "Sucess") {
+      localStorage.setItem("role" , res.data.UserInfo.role)
+        navigate("/login");
+    }
+})
+.catch((err) => {
    
-   navigate("/login")
+    console.log(err); 
+    setApiError("User Already exists");
+});
+
+
  }
- 
-  
-})
- 
-.catch((res)=>{
-setApiError("User Already exist")
-  
-})
-    
- }
-
-
-
-
-
-
-
 
 let myValidation = yup.object().shape({
   username: yup.string().min(3, "min Length is a 3chr").max(15 , "max Length is a 15chr").required("name is a Required"),
@@ -74,31 +72,23 @@ let formik = useFormik({
 
 
 
-
-
-
-
-
-
-
-
-
   return (
 
 <>
+<div className="Login_page p-5 ">
 
 <div className="lg:w-xl sm:w-md sm:p-2">
 
 
 
- {ApiError ? <div className='w-full  bg-danger text-white fw-bold rounded-lg p-3 '> {ApiError} </div> : null}
+ {ApiError ? <div className='  bg-danger rounded-3  w-50 mt-5  m-auto text-center text-white fw-bold  p-3 '> {ApiError} </div> : null}
 
 </div>
 
 
 
 
- <div className="Login_page p-5 ">
+ 
 
 
       <div className="login container Login-bg py-4">
@@ -274,16 +264,16 @@ let formik = useFormik({
 
 
 
-
-  
-
 </>
+
+
+
 
 );  
  
   
 
 
- 
+
 
 }
