@@ -1,10 +1,14 @@
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import style from "../login/login.module.css"
-import React, { useState } from 'react'
+import { useContext, useState } from 'react'
 import { useFormik } from "formik";
 import * as yup from "yup"
 import axios from 'axios';
-import {useNavigate } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
+import { UserContext } from "../Context/UserContext.jsx";
+import hrdashboard from "../HrDashboard/HrDashboard.jsx"
+
+
 
 
 
@@ -13,6 +17,7 @@ export default function Login() {
   const [ApiError, setApiError] = useState("")
   let navigate = useNavigate()
 
+const {setuserLogin , userLogin , userRole , setuserRole , setusername , username} = useContext(UserContext)
 
 
  function handleLogin(values){
@@ -20,9 +25,38 @@ export default function Login() {
 axios.post(`http://localhost:5000/api/login`,values)
 .then((res)=>{
   console.log(res);
-  // localStorage.setItem("userToken" ,res.data.token)
-  // setUserLogin(res.data.token)
-  // navigate("/")
+
+if(res.data.msg === "Login successful" && res.data.user.role === "HR" ){
+    localStorage.setItem("userToken" ,res.data.token)
+     localStorage.setItem("role" , res.data.user.role)
+     localStorage.setItem("username" , res.data.user.username)
+  setuserRole(res.data.user.role)
+  setuserLogin(res.data.token)
+  setusername(res.data.user.username)
+  navigate("/hrdashboard") 
+
+
+}
+
+else{
+
+res.data.msg === "Login successful" && res.data.user.role === "employee"
+localStorage.setItem("userToken" ,res.data.token)
+localStorage.setItem("role" , res.data.user.role)
+ setuserRole(res.data.user.role)
+   setuserLogin(res.data.token)
+     navigate("/")
+ 
+}
+
+
+
+
+
+
+
+
+
   
 })
  
@@ -66,17 +100,27 @@ let formik = useFormik({
   return (
 <>
 
+
+
+
+
+<div className="Login_page ">
+
+
+
+
 <div className="lg:w-xl sm:w-md sm:p-2">
 
 
 
- {ApiError ? <div className='w-full  bg-danger text-white fw-bold rounded-lg p-3 '> {ApiError} </div> : null}
+ {ApiError ? <div className='bg-danger rounded-3  w-50 mb-3  m-auto text-center text-white fw-bold  p-3 '> {ApiError} </div> : null}
 
 </div>
 
 
 
-<div className="Login_page ">
+
+
       <div className="login container Login-bg py-4">
         <div className="bg-block text-center ">
           <h3>

@@ -2,6 +2,9 @@ import React, { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import style from "../FormRequest/FormRequest.module.css"
 import { LeaveContext } from "../Context/LeaveContext.jsx"
+import Sidebar from '../Sidebar/Sidebar.jsx';
+import MyNavbar from '../MyNavbar/MyNavbar.jsx';
+import Footer from '../Footer/Footer.jsx';
 
 export default function FormRequest() {
 
@@ -41,16 +44,35 @@ export default function FormRequest() {
     addRequest(newRequest);
     
   
-    navigate('/empdashboard'); 
+    navigate('/'); 
   };
 
  
   const handleCancel = () => {
-    navigate('/empdashboard');
+    navigate('/');
   };
 
   return (
-    <div className="row justify-content-center align-items-center  vh-100 m-0">
+
+
+   
+
+
+
+<div className="d-flex" >
+    <Sidebar/>
+
+<div className='flex-grow-1 vh-100  overflow-y-hidden overflow-x-hidden' >
+<MyNavbar/>
+<main className='' >
+
+
+ 
+
+
+ 
+
+ <div className="row justify-content-center mt-5  align-items-center ">
       <div className="col-md-6">
         <div className="card shadow-lg border-0">
           <div className={ `${style.cardheader} text-white p-4` }>
@@ -95,5 +117,36 @@ export default function FormRequest() {
         </div>
       </div>
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</main>
+
+
+
+
+
+<Footer/>
+  </div>
+
+
+
+  </div>
+
+
+
+
+
+
   );
 }

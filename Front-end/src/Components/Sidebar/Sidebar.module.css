@@ -18,3 +18,37 @@
 font-size: smaller;
 
 }
+
+
+
+.NavLink{
+  list-style: none;
+  text-decoration: none;
+  color: #6c757d;
+}
+
+
+
+
+.NavLink {
+    display: block; 
+    width: 100%;
+    text-decoration: none;
+}
+
+
+.NavLink:global(.active) {
+    background-color: #102E70 !important; 
+    color: white !important;
+    /* padding: 10px 20px;  */
+     width: 100%;
+
+
+}
+
+.NavLink:hover {
+    display: block; 
+    width: 100%;
+    text-decoration: none;
+    color: white;
+}

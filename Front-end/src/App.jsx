@@ -10,15 +10,29 @@ import  NotFound  from './Components/NotFound/NotFound'
 import ProtectedRout from './Components/ProtectedRout/ProtectedRout.jsx'
 import FormRequest from './Components/FormRequest/FormRequest.jsx'
 import { LeaveProvider } from './Components/Context/LeaveContext.jsx'
+ import MyRequests from "../src/Components/MyRequests/MyRequests.jsx"
+import LeaveHistory from "../src/Components/LeaveHistory/LeaveHistory.jsx"
+import Profile from './Components/Profile/Profile.jsx'
+import Settings from './Components/Settings/Settings.jsx'
+import { UserContextProvider } from './Components/Context/UserContext.jsx'
 
 function App() {
 
+  
 
 let y = createBrowserRouter([
   {path: "" , element: <Layout/> , children:[
-    {path: "hrdashboard" , element: <HrDashboard/>},
-    {path: "empdashboard" , element: <Empdashboard/>},   
-    {path: "formrequest" , element: <FormRequest/>},   
+    {path:"/" , element: <ProtectedRout><Empdashboard/></ProtectedRout> },   
+    {path: "hrdashboard" , element: <ProtectedRout> <HrDashboard/> </ProtectedRout>},
+    {path: "formrequest" , element: <ProtectedRout><FormRequest/></ProtectedRout> },  
+
+    {path: "profile" , element: <ProtectedRout><Profile/></ProtectedRout> },   
+    {path: "settings" , element: <ProtectedRout><Settings/></ProtectedRout> },   
+
+    {path: "myrequests" , element: <ProtectedRout> <MyRequests/> </ProtectedRout> },   
+     {path: "leavehistory" , element: <ProtectedRout><LeaveHistory/></ProtectedRout> },   
+    
+
     {path: "login" , element: <Login/>},
     {path: "register" , element: <Register/>},
     {path: "*" , element: <NotFound/>},
@@ -29,10 +43,11 @@ let y = createBrowserRouter([
 
   return (
     <>
+    <UserContextProvider>
 <LeaveProvider>
-
  <RouterProvider router={y}></RouterProvider>
 </LeaveProvider>
+</UserContextProvider>
 
     </>
   )

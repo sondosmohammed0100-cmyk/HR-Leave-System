@@ -25,6 +25,8 @@ function HrDashboard() {
 
   return (
     <>
+
+
       <div className="d-flex">
         <Sidebar />
 
@@ -32,13 +34,15 @@ function HrDashboard() {
           <MyNavbar />
 
           <main className="">
+
+
             <section className="py-4">
               <div className="container">
                 <div className="row">
                   <div className="col-12 col-md-4 ">
                     <div className={`${Style.cardStatus}`}>
                       <div className={`${Style.icon} `}>
-                        <i className="fa-solid fa-users"></i>
+                        <i className="fa-solid text-primary fa-users"></i>
                       </div>
 
                       <h6 className={Style.title}>TOTAL EMPLOYEES</h6>
@@ -50,7 +54,7 @@ function HrDashboard() {
                   <div className="col-12 col-md-4 ">
                     <div className={`${Style.cardStatus}`}>
                       <div className={`${Style.icon} `}>
-                        <i className="fa-solid fa-umbrella-beach"></i>
+                        <i className="fa-solid text-warning fa-umbrella-beach"></i>
                       </div>
 
                       <h6 className={Style.title}>On Leave Today</h6>
@@ -62,7 +66,7 @@ function HrDashboard() {
                   <div className="col-12 col-md-4 ">
                     <div className={`${Style.cardStatus}`}>
                       <div className={`${Style.icon} `}>
-                        <i class="fa-solid fa-hourglass-half"></i>
+                        <i className="fa-solid text-success fa-hourglass-half"></i>
                       </div>
 
                       <h6 className={Style.title}>Pending Requests</h6>
@@ -73,7 +77,7 @@ function HrDashboard() {
                 </div>
               </div>
 
-              <div className={`${Style.card} mt-5`}>
+              <div className={`${Style.card} mt-5 container`}>
                 <div className=" p-4 d-flex justify-content-between text-center">
                   <div className="info">
                     <h5>Recent Leave Requests</h5>
@@ -126,14 +130,14 @@ function HrDashboard() {
                         <td>
                           <button
                             type="button"
-                            className={`${Style.button1} btn me-md-2 muted`}
+                            className={`${Style.button1} text-white fw-bold btn me-md-2 muted`}
                           >
                             {" "}
                             Accept{" "}
                           </button>
                           <button
                             type="button"
-                            className={`${Style.button2} btn me-md-2 muted`}
+                            className={`${Style.button2} text-white fw-bold btn me-md-2 muted`}
                           >
                             {" "}
                             Reject{" "}
@@ -145,11 +149,17 @@ function HrDashboard() {
                 </table>
               </div>
             </section>
+
+
+
+
           </main>
 
           <Footer />
         </div>
       </div>
+
+      
     </>
   );
 }

@@ -6,7 +6,7 @@ import React from 'react'
   <div>
 
   
-  <h5 className={`${style.footer}   text-center    text-white `}> 2026  Copyrights © 
+  <h5 className={`${style.footer}   text-center p-0 m-0 fixed-bottom    text-white `}> 2026  Copyrights © 
 Leave HR </h5>
 
   </div>

@@ -8,6 +8,12 @@ import img1 from "../../assets/📅.png"
 import img2 from "../../assets/✈.png"
 import img3 from "../../assets/⏳.png"
 import LeaveBalance from "../LeaveBalance/LeaveBalance.jsx";
+import { Route, Routes } from "react-router-dom";
+
+import ProtectedRout from "../ProtectedRout/ProtectedRout.jsx"
+import MyRequests from "../MyRequests/MyRequests.jsx";
+import LeaveHistory from "../LeaveHistory/LeaveHistory.jsx";
+
 
  function EmpDashboard() {
 
@@ -34,16 +40,19 @@ const getStatusBadge = (status) => {
   <div className="d-flex" >
     <Sidebar/>
 
-<div className='flex-grow-1 vh-100' >
+<div className='flex-grow-1 vh-100 overflow-y-hidden overflow-x-hidden' >
 <MyNavbar/>
 <main  className="" >
+
+
+ 
 
 
   <div className={`${style.cards} row justify-content-around py-5 m-0 `}>
 
 
 
-    <div className="col-3 pt-3  rounded-4 card1">
+    <div className="col-12 col-md-3 pt-3  rounded-4 card1">
       <div>
         <div className="icont1">
           <img src={img1} className="py-3 " alt="" />
@@ -60,7 +69,7 @@ const getStatusBadge = (status) => {
 
 
 
-   <div className="col-3 pt-3   rounded-4 card2">
+   <div className="col-12 col-md-3 pt-3   rounded-4 card2">
       <div>
         <div className="icont2">
           <img src={img2} className="py-3 "  alt="" />
@@ -75,7 +84,7 @@ const getStatusBadge = (status) => {
 
 
 
-   <div className="col-3 pt-3 rounded-4 card3">
+   <div className="col-12 col-md-3 pt-3 rounded-4 card3">
       <div>
         <div className="icont3">
           <img src={img3} className="py-3" alt="" />
@@ -162,6 +171,7 @@ const getStatusBadge = (status) => {
 
 <Footer/>
   </div>
+
 
 
   </div>
