@@ -9,6 +9,7 @@ const authmiddleware = (req,res,next)=>{
         const payload = jwt.verify(token,process.env.JWT_SECRET);
         req.user = payload;
         req.userId=payload.id;
+        req.role=payload.role;
         next();
     }
     catch(error){

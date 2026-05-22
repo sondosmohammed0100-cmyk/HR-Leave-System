@@ -22,9 +22,14 @@ DB_Connection();
 
 const authRouter=require('./Routes/User.router')
 const leaveRoutes=require('./Routes/Leave.router')
+const getDashboard=require('./Routes/dashboard.router')
+const rejectRouter = require('./Routes/delete.router');
+
+
 app.use('/api',authRouter)
 app.use('/api',leaveRoutes)
-
+app.use('/api',getDashboard)
+app.use('/api',rejectRouter )
 
 const globalMiddleware=require('./Middelware/globalMiddleware')
 

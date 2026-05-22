@@ -63,9 +63,7 @@ async(req,res,next)=>{
         process.env.JWT_SECRET,
         {expiresIn:"30d"});
    // return console.log(token)
-    return res.status(200).json({
-        msg:"Login successful",
-        token
+    return res.status(200).json({msg:"Login successful",token,user
     });
 })
 

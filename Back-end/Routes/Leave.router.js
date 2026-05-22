@@ -8,14 +8,13 @@ const {
   getBalance
 
 } = require("../Controller/LeaveBalance");
+const authorizeRole=require('../Middelware/AdminMiddelware')
 const getEmployeeStats=require('../Controller/Employee.controller')
-router.post("/inserleave", authmiddleware, AttachFile, insertLeave);
 
 
-
-
-router.patch("/approve/:id",authmiddleware ,ApproveLeave);
-router.get('/getbalance',authmiddleware,getBalance);
-router.get('/employee',authmiddleware,getEmployeeStats)
+router.post("/insertleave", authmiddleware, AttachFile, insertLeave);
+router.patch("/leave/approve/:id",authmiddleware,authorizeRole,ApproveLeave);
+router.get('/leave/getbalance',authmiddleware,getBalance);
+router.get('/employee/:userid',authmiddleware,getEmployeeStats)
 
 module.exports = router;
